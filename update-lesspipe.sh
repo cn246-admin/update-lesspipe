@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Description: Download, verify and install yq on Linux and Mac
+# Description: Download, verify and install lesspipe on Linux and Mac
 # Author: Chuck Nemeth
 # https://github.com/wofr06/lesspipe
 
