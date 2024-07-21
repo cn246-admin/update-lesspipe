@@ -4,7 +4,7 @@
 # Author: Chuck Nemeth
 # https://github.com/wofr06/lesspipe
 
-# VARIABLES
+# Variables
 bin_dir="$HOME/.local/bin"
 cpl_dir="$HOME/.config/zsh/completions/"
 man_dir="$HOME/.local/share/man/man1"
@@ -23,15 +23,12 @@ lesspipe_version="${v_lesspipe_version#?}"
 
 lesspipe_repo="git@github.com:wofr06/lesspipe.git"
 
-
-# FUNCTIONS
-# colored output
+# Colored output
 code_grn () { tput setaf 2; printf '%s\n' "${1}"; tput sgr0; }
 code_red () { tput setaf 1; printf '%s\n' "${1}"; tput sgr0; }
 code_yel () { tput setaf 3; printf '%s\n' "${1}"; tput sgr0; }
 
-
-# PATH CHECK
+# PATH Check
 case :$PATH: in
   *:"${bin_dir}":*)  ;;  # do nothing
   *)
@@ -41,8 +38,7 @@ case :$PATH: in
     ;;
 esac
 
-
-# VERSION CHECK
+# Version check
 cd "${src_dir}" || exit
 
 if [ "${lesspipe_version}" = "${lesspipe_installed_version}" ]; then
@@ -55,8 +51,7 @@ else
   printf '%s\n' "Latest Version: ${lesspipe_version}"
 fi
 
-
-# DOWNLOAD
+# Download
 if [ ! -d "${src_dir}/lesspipe" ]; then
   printf '%s\n' "Cloning the lesspipe repo"
   git clone "${lesspipe_repo}" lesspipe
@@ -66,14 +61,10 @@ else
   git pull
 fi
 
-
-# PREPARE
 # Create directories
 [ ! -d "${bin_dir}" ] && install -m 0700 -d "${bin_dir}"
 [ ! -d "${man_dir}" ] && install -m 0700 -d "${man_dir}"
 
-
-# INSTALL
 # Create symlinks
 printf '%s\n' "Creating symlinks"
 ln -sf "${src_dir}/lesspipe/lesspipe.sh" "${bin_dir}"
@@ -85,8 +76,7 @@ ln -sf "${src_dir}/lesspipe/lesscomplete" "${bin_dir}"
 ln -sf "${src_dir}/lesspipe/lesspipe.1" "${man_dir}"
 ln -sf "${src_dir}/lesspipe/_less" "${cpl_dir}"
 
-
-# VERSION CHECK
+# Version check
 code_grn "Done!"
 code_grn "Installed Version: ${lesspipe_installed_version}"
 
