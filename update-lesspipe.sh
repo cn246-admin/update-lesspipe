@@ -4,6 +4,11 @@
 # Author: Chuck Nemeth
 # https://github.com/wofr06/lesspipe
 
+# Colored output
+code_grn() { tput setaf 2; printf '%s\n' "${1}"; tput sgr0; }
+code_red() { tput setaf 1; printf '%s\n' "${1}"; tput sgr0; }
+code_yel() { tput setaf 3; printf '%s\n' "${1}"; tput sgr0; }
+
 # Variables
 bin_dir="$HOME/.local/bin"
 cpl_dir="$HOME/.config/zsh/completions/"
@@ -22,11 +27,6 @@ v_lesspipe_version="$(curl -s https://api.github.com/repos/wofr06/lesspipe/relea
 lesspipe_version="${v_lesspipe_version#?}"
 
 lesspipe_repo="git@github.com:wofr06/lesspipe.git"
-
-# Colored output
-code_grn () { tput setaf 2; printf '%s\n' "${1}"; tput sgr0; }
-code_red () { tput setaf 1; printf '%s\n' "${1}"; tput sgr0; }
-code_yel () { tput setaf 3; printf '%s\n' "${1}"; tput sgr0; }
 
 # PATH Check
 case :$PATH: in
