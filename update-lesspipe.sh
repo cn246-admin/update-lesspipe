@@ -15,7 +15,7 @@ cpl_dir="$HOME/.config/zsh/completions/"
 man_dir="$HOME/.local/share/man/man1"
 src_dir="$HOME/.local/src"
 
-if command -v lesspipe.sh >/dev/null; then
+if command -v lesspipe.sh >/dev/null 2>&1; then
   lesspipe_installed_version=$(awk -F'=' '/lesspipe_version=[0-9]\.[0-9]+/ { print $2 }' "${bin_dir}/lesspipe.sh")
 else
   lesspipe_installed_version="Not Installed"
